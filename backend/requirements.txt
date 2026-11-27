@@ -1,0 +1,20 @@
+﻿# ASGI Backend Engine
+starlette>=0.40.0
+fastapi>=0.115.0
+uvicorn[standard]>=0.34.0
+pydantic>=2.10.0
+
+# Data Science & Machine Learning
+numpy>=2.0.0
+pandas>=2.2.0
+scikit-learn>=1.6.0
+joblib>=1.4.0
+
+# Visualization & Notebooks
+matplotlib>=3.10.0
+seaborn>=0.13.0
+jupyter>=1.1.0
+ipykernel>=6.29.0
+
+# Environment & Utilities
+python-dotenv>=1.0.0

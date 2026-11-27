@@ -1,0 +1,431 @@
+{
+  "dataset_summary": {
+    "total_customers": 7043,
+    "churned_customers": 1869,
+    "retained_customers": 5174,
+    "baseline_churn_rate": 26.54,
+    "total_mrr": 456116.6,
+    "mrr_at_risk": 139130.85
+  },
+  "key_drivers": [
+    {
+      "id": "contract_type",
+      "driver": "Month-to-Month Contracts",
+      "churn_rate": "42.7%",
+      "baseline_diff": "+16.2% vs baseline",
+      "relative_importance": 95,
+      "summary": "Customers on month-to-month commitments are ~15x more likely to churn than 2-year contract customers."
+    },
+    {
+      "id": "fiber_optic",
+      "driver": "Fiber Optic Internet without Support",
+      "churn_rate": "41.9%",
+      "baseline_diff": "+15.4% vs baseline",
+      "relative_importance": 85,
+      "summary": "Fiber optic customers experience high churn (~41.9%) despite high monthly charges, indicating potential service reliability issues."
+    },
+    {
+      "id": "electronic_check",
+      "driver": "Electronic Check Payment Method",
+      "churn_rate": "45.3%",
+      "baseline_diff": "+18.7% vs baseline",
+      "relative_importance": 80,
+      "summary": "Customers paying by electronic check exhibit 45.3% churn, compared to ~16% for automatic payment methods."
+    },
+    {
+      "id": "early_tenure",
+      "driver": "Early Tenure Risk (First 12 Months)",
+      "churn_rate": "47.4%",
+      "baseline_diff": "+20.9% vs baseline",
+      "relative_importance": 78,
+      "summary": "The median tenure of churned customers is only 10 months. Customer attrition is heavily concentrated in the onboarding year."
+    }
+  ],
+  "contract_exposure": [
+    {
+      "Contract": "Month-to-month",
+      "total_customers": 3875,
+      "churned_customers": 1655,
+      "total_mrr": 257294.15,
+      "mrr_at_risk": 120847.1
+    },
+    {
+      "Contract": "One year",
+      "total_customers": 1473,
+      "churned_customers": 166,
+      "total_mrr": 95816.6,
+      "mrr_at_risk": 14118.45
+    },
+    {
+      "Contract": "Two year",
+      "total_customers": 1695,
+      "churned_customers": 48,
+      "total_mrr": 103005.85,
+      "mrr_at_risk": 4165.3
+    }
+  ],
+  "numerical_insights": {
+    "tenure": {
+      "feature": "tenure",
+      "retained_mean": 37.56996521066873,
+      "retained_median": 38.0,
+      "retained_std": 24.113776690704075,
+      "churned_mean": 17.979133226324237,
+      "churned_median": 10.0,
+      "churned_std": 19.53112305451955
+    },
+    "MonthlyCharges": {
+      "feature": "MonthlyCharges",
+      "retained_mean": 61.26512369540008,
+      "retained_median": 64.42500000000001,
+      "retained_std": 31.092648119345295,
+      "churned_mean": 74.44133226324237,
+      "churned_median": 79.65,
+      "churned_std": 24.666053259397433
+    },
+    "TotalCharges": {
+      "feature": "TotalCharges",
+      "retained_mean": 2549.911441824507,
+      "retained_median": 1679.525,
+      "retained_std": 2329.9542153978296,
+      "churned_mean": 1531.7960941680042,
+      "churned_median": 703.55,
+      "churned_std": 1890.822994464404
+    }
+  },
+  "categorical_insights": {
+    "Contract": [
+      {
+        "Contract": "Month-to-month",
+        "total": 3875,
+        "churned": 1655,
+        "churn_rate": 42.71,
+        "avg_monthly_charges": 66.4
+      },
+      {
+        "Contract": "One year",
+        "total": 1473,
+        "churned": 166,
+        "churn_rate": 11.27,
+        "avg_monthly_charges": 65.05
+      },
+      {
+        "Contract": "Two year",
+        "total": 1695,
+        "churned": 48,
+        "churn_rate": 2.83,
+        "avg_monthly_charges": 60.77
+      }
+    ],
+    "InternetService": [
+      {
+        "InternetService": "DSL",
+        "total": 2421,
+        "churned": 459,
+        "churn_rate": 18.96,
+        "avg_monthly_charges": 58.1
+      },
+      {
+        "InternetService": "Fiber optic",
+        "total": 3096,
+        "churned": 1297,
+        "churn_rate": 41.89,
+        "avg_monthly_charges": 91.5
+      },
+      {
+        "InternetService": "No",
+        "total": 1526,
+        "churned": 113,
+        "churn_rate": 7.4,
+        "avg_monthly_charges": 21.08
+      }
+    ],
+    "PaymentMethod": [
+      {
+        "PaymentMethod": "Bank transfer (automatic)",
+        "total": 1544,
+        "churned": 258,
+        "churn_rate": 16.71,
+        "avg_monthly_charges": 67.19
+      },
+      {
+        "PaymentMethod": "Credit card (automatic)",
+        "total": 1522,
+        "churned": 232,
+        "churn_rate": 15.24,
+        "avg_monthly_charges": 66.51
+      },
+      {
+        "PaymentMethod": "Electronic check",
+        "total": 2365,
+        "churned": 1071,
+        "churn_rate": 45.29,
+        "avg_monthly_charges": 76.26
+      },
+      {
+        "PaymentMethod": "Mailed check",
+        "total": 1612,
+        "churned": 308,
+        "churn_rate": 19.11,
+        "avg_monthly_charges": 43.92
+      }
+    ],
+    "OnlineSecurity": [
+      {
+        "OnlineSecurity": "No",
+        "total": 3498,
+        "churned": 1461,
+        "churn_rate": 41.77,
+        "avg_monthly_charges": 75.69
+      },
+      {
+        "OnlineSecurity": "No internet service",
+        "total": 1526,
+        "churned": 113,
+        "churn_rate": 7.4,
+        "avg_monthly_charges": 21.08
+      },
+      {
+        "OnlineSecurity": "Yes",
+        "total": 2019,
+        "churned": 295,
+        "churn_rate": 14.61,
+        "avg_monthly_charges": 78.84
+      }
+    ],
+    "TechSupport": [
+      {
+        "TechSupport": "No",
+        "total": 3473,
+        "churned": 1446,
+        "churn_rate": 41.64,
+        "avg_monthly_charges": 74.59
+      },
+      {
+        "TechSupport": "No internet service",
+        "total": 1526,
+        "churned": 113,
+        "churn_rate": 7.4,
+        "avg_monthly_charges": 21.08
+      },
+      {
+        "TechSupport": "Yes",
+        "total": 2044,
+        "churned": 310,
+        "churn_rate": 15.17,
+        "avg_monthly_charges": 80.68
+      }
+    ],
+    "PaperlessBilling": [
+      {
+        "PaperlessBilling": "No",
+        "total": 2872,
+        "churned": 469,
+        "churn_rate": 16.33,
+        "avg_monthly_charges": 51.99
+      },
+      {
+        "PaperlessBilling": "Yes",
+        "total": 4171,
+        "churned": 1400,
+        "churn_rate": 33.57,
+        "avg_monthly_charges": 73.55
+      }
+    ],
+    "SeniorCitizen": [
+      {
+        "SeniorCitizen": 0,
+        "total": 5901,
+        "churned": 1393,
+        "churn_rate": 23.61,
+        "avg_monthly_charges": 61.85
+      },
+      {
+        "SeniorCitizen": 1,
+        "total": 1142,
+        "churned": 476,
+        "churn_rate": 41.68,
+        "avg_monthly_charges": 79.82
+      }
+    ],
+    "Partner": [
+      {
+        "Partner": "No",
+        "total": 3641,
+        "churned": 1200,
+        "churn_rate": 32.96,
+        "avg_monthly_charges": 61.95
+      },
+      {
+        "Partner": "Yes",
+        "total": 3402,
+        "churned": 669,
+        "churn_rate": 19.66,
+        "avg_monthly_charges": 67.78
+      }
+    ],
+    "Dependents": [
+      {
+        "Dependents": "No",
+        "total": 4933,
+        "churned": 1543,
+        "churn_rate": 31.28,
+        "avg_monthly_charges": 67.0
+      },
+      {
+        "Dependents": "Yes",
+        "total": 2110,
+        "churned": 326,
+        "churn_rate": 15.45,
+        "avg_monthly_charges": 59.52
+      }
+    ],
+    "PhoneService": [
+      {
+        "PhoneService": "No",
+        "total": 682,
+        "churned": 170,
+        "churn_rate": 24.93,
+        "avg_monthly_charges": 42.03
+      },
+      {
+        "PhoneService": "Yes",
+        "total": 6361,
+        "churned": 1699,
+        "churn_rate": 26.71,
+        "avg_monthly_charges": 67.2
+      }
+    ],
+    "MultipleLines": [
+      {
+        "MultipleLines": "No",
+        "total": 3390,
+        "churned": 849,
+        "churn_rate": 25.04,
+        "avg_monthly_charges": 54.2
+      },
+      {
+        "MultipleLines": "No phone service",
+        "total": 682,
+        "churned": 170,
+        "churn_rate": 24.93,
+        "avg_monthly_charges": 42.03
+      },
+      {
+        "MultipleLines": "Yes",
+        "total": 2971,
+        "churned": 850,
+        "churn_rate": 28.61,
+        "avg_monthly_charges": 82.04
+      }
+    ],
+    "OnlineBackup": [
+      {
+        "OnlineBackup": "No",
+        "total": 3088,
+        "churned": 1233,
+        "churn_rate": 39.93,
+        "avg_monthly_charges": 71.94
+      },
+      {
+        "OnlineBackup": "No internet service",
+        "total": 1526,
+        "churned": 113,
+        "churn_rate": 7.4,
+        "avg_monthly_charges": 21.08
+      },
+      {
+        "OnlineBackup": "Yes",
+        "total": 2429,
+        "churned": 523,
+        "churn_rate": 21.53,
+        "avg_monthly_charges": 83.08
+      }
+    ],
+    "DeviceProtection": [
+      {
+        "DeviceProtection": "No",
+        "total": 3095,
+        "churned": 1211,
+        "churn_rate": 39.13,
+        "avg_monthly_charges": 70.6
+      },
+      {
+        "DeviceProtection": "No internet service",
+        "total": 1526,
+        "churned": 113,
+        "churn_rate": 7.4,
+        "avg_monthly_charges": 21.08
+      },
+      {
+        "DeviceProtection": "Yes",
+        "total": 2422,
+        "churned": 545,
+        "churn_rate": 22.5,
+        "avg_monthly_charges": 84.82
+      }
+    ],
+    "StreamingTV": [
+      {
+        "StreamingTV": "No",
+        "total": 2810,
+        "churned": 942,
+        "churn_rate": 33.52,
+        "avg_monthly_charges": 65.39
+      },
+      {
+        "StreamingTV": "No internet service",
+        "total": 1526,
+        "churned": 113,
+        "churn_rate": 7.4,
+        "avg_monthly_charges": 21.08
+      },
+      {
+        "StreamingTV": "Yes",
+        "total": 2707,
+        "churned": 814,
+        "churn_rate": 30.07,
+        "avg_monthly_charges": 88.74
+      }
+    ],
+    "StreamingMovies": [
+      {
+        "StreamingMovies": "No",
+        "total": 2785,
+        "churned": 938,
+        "churn_rate": 33.68,
+        "avg_monthly_charges": 65.43
+      },
+      {
+        "StreamingMovies": "No internet service",
+        "total": 1526,
+        "churned": 113,
+        "churn_rate": 7.4,
+        "avg_monthly_charges": 21.08
+      },
+      {
+        "StreamingMovies": "Yes",
+        "total": 2732,
+        "churned": 818,
+        "churn_rate": 29.94,
+        "avg_monthly_charges": 88.48
+      }
+    ],
+    "gender": [
+      {
+        "gender": "Female",
+        "total": 3488,
+        "churned": 939,
+        "churn_rate": 26.92,
+        "avg_monthly_charges": 65.2
+      },
+      {
+        "gender": "Male",
+        "total": 3555,
+        "churned": 930,
+        "churn_rate": 26.16,
+        "avg_monthly_charges": 64.33
+      }
+    ]
+  }
+}

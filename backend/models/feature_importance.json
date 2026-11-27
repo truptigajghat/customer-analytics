@@ -1,0 +1,122 @@
+[
+  {
+    "feature": "tenure",
+    "importance": 19.87
+  },
+  {
+    "feature": "Contract_Two year",
+    "importance": 13.0
+  },
+  {
+    "feature": "TotalCharges",
+    "importance": 11.41
+  },
+  {
+    "feature": "InternetService_Fiber optic",
+    "importance": 8.4
+  },
+  {
+    "feature": "MonthlyCharges",
+    "importance": 7.47
+  },
+  {
+    "feature": "PaymentMethod_Electronic check",
+    "importance": 7.02
+  },
+  {
+    "feature": "Contract_One year",
+    "importance": 4.43
+  },
+  {
+    "feature": "OnlineSecurity_Yes",
+    "importance": 3.61
+  },
+  {
+    "feature": "TechSupport_Yes",
+    "importance": 2.19
+  },
+  {
+    "feature": "DeviceProtection_No internet service",
+    "importance": 2.12
+  },
+  {
+    "feature": "OnlineSecurity_No internet service",
+    "importance": 2.1
+  },
+  {
+    "feature": "TechSupport_No internet service",
+    "importance": 2.06
+  },
+  {
+    "feature": "StreamingMovies_No internet service",
+    "importance": 1.92
+  },
+  {
+    "feature": "OnlineBackup_No internet service",
+    "importance": 1.75
+  },
+  {
+    "feature": "StreamingTV_No internet service",
+    "importance": 1.47
+  },
+  {
+    "feature": "PaperlessBilling_Yes",
+    "importance": 1.32
+  },
+  {
+    "feature": "OnlineBackup_Yes",
+    "importance": 1.18
+  },
+  {
+    "feature": "InternetService_No",
+    "importance": 1.08
+  },
+  {
+    "feature": "Dependents_Yes",
+    "importance": 0.96
+  },
+  {
+    "feature": "MultipleLines_Yes",
+    "importance": 0.82
+  },
+  {
+    "feature": "StreamingMovies_Yes",
+    "importance": 0.8
+  },
+  {
+    "feature": "Partner_Yes",
+    "importance": 0.71
+  },
+  {
+    "feature": "StreamingTV_Yes",
+    "importance": 0.7
+  },
+  {
+    "feature": "gender_Male",
+    "importance": 0.69
+  },
+  {
+    "feature": "PaymentMethod_Credit card (automatic)",
+    "importance": 0.68
+  },
+  {
+    "feature": "DeviceProtection_Yes",
+    "importance": 0.64
+  },
+  {
+    "feature": "PaymentMethod_Mailed check",
+    "importance": 0.51
+  },
+  {
+    "feature": "SeniorCitizen_1",
+    "importance": 0.5
+  },
+  {
+    "feature": "MultipleLines_No phone service",
+    "importance": 0.32
+  },
+  {
+    "feature": "PhoneService_Yes",
+    "importance": 0.29
+  }
+]

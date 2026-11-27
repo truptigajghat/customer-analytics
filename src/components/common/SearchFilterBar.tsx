@@ -68,8 +68,8 @@ export function SearchFilterBar({
 
       {filters.length > 0 && (
         <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6">
-          {filters.map((f) => (
-            <div key={f.id} className="flex flex-col gap-1">
+          {filters.map((f, idx) => (
+            <div key={f.id || f.label || idx} className="flex flex-col gap-1">
               <label
                 htmlFor={f.id}
                 className="text-[11px] font-medium text-[var(--text-muted)]"

@@ -1,0 +1,189 @@
+{
+  "held_out_samples": 1409,
+  "uncalibrated": {
+    "brier_score": 0.1623,
+    "log_loss": 0.4846
+  },
+  "calibrated": {
+    "brier_score": 0.1357,
+    "log_loss": 0.4183
+  },
+  "reliability_curve": [
+    {
+      "predicted": 0.0501,
+      "observed": 0.0107
+    },
+    {
+      "predicted": 0.1465,
+      "observed": 0.0612
+    },
+    {
+      "predicted": 0.2467,
+      "observed": 0.1264
+    },
+    {
+      "predicted": 0.3552,
+      "observed": 0.1622
+    },
+    {
+      "predicted": 0.448,
+      "observed": 0.2
+    },
+    {
+      "predicted": 0.5517,
+      "observed": 0.3307
+    },
+    {
+      "predicted": 0.6523,
+      "observed": 0.4143
+    },
+    {
+      "predicted": 0.751,
+      "observed": 0.5634
+    },
+    {
+      "predicted": 0.8502,
+      "observed": 0.7165
+    },
+    {
+      "predicted": 0.9138,
+      "observed": 0.8125
+    }
+  ],
+  "threshold_evaluations": [
+    {
+      "threshold": 0.25,
+      "precision": 0.3991,
+      "recall": 0.9412,
+      "f1": 0.5605,
+      "fpr": 0.5121,
+      "fnr": 0.0588,
+      "tp": 352,
+      "fp": 530,
+      "tn": 505,
+      "fn": 22
+    },
+    {
+      "threshold": 0.3,
+      "precision": 0.4243,
+      "recall": 0.9064,
+      "f1": 0.578,
+      "fpr": 0.4444,
+      "fnr": 0.0936,
+      "tp": 339,
+      "fp": 460,
+      "tn": 575,
+      "fn": 35
+    },
+    {
+      "threshold": 0.35,
+      "precision": 0.4403,
+      "recall": 0.8877,
+      "f1": 0.5887,
+      "fpr": 0.4077,
+      "fnr": 0.1123,
+      "tp": 332,
+      "fp": 422,
+      "tn": 613,
+      "fn": 42
+    },
+    {
+      "threshold": 0.4,
+      "precision": 0.4666,
+      "recall": 0.8583,
+      "f1": 0.6045,
+      "fpr": 0.3546,
+      "fnr": 0.1417,
+      "tp": 321,
+      "fp": 367,
+      "tn": 668,
+      "fn": 53
+    },
+    {
+      "threshold": 0.45,
+      "precision": 0.5,
+      "recall": 0.8422,
+      "f1": 0.6275,
+      "fpr": 0.3043,
+      "fnr": 0.1578,
+      "tp": 315,
+      "fp": 315,
+      "tn": 720,
+      "fn": 59
+    },
+    {
+      "threshold": 0.5,
+      "precision": 0.5229,
+      "recall": 0.7941,
+      "f1": 0.6306,
+      "fpr": 0.2618,
+      "fnr": 0.2059,
+      "tp": 297,
+      "fp": 271,
+      "tn": 764,
+      "fn": 77
+    },
+    {
+      "threshold": 0.55,
+      "precision": 0.5496,
+      "recall": 0.7406,
+      "f1": 0.631,
+      "fpr": 0.2193,
+      "fnr": 0.2594,
+      "tp": 277,
+      "fp": 227,
+      "tn": 808,
+      "fn": 97
+    },
+    {
+      "threshold": 0.6,
+      "precision": 0.5782,
+      "recall": 0.6818,
+      "f1": 0.6258,
+      "fpr": 0.1797,
+      "fnr": 0.3182,
+      "tp": 255,
+      "fp": 186,
+      "tn": 849,
+      "fn": 119
+    },
+    {
+      "threshold": 0.65,
+      "precision": 0.6216,
+      "recall": 0.615,
+      "f1": 0.6183,
+      "fpr": 0.1353,
+      "fnr": 0.385,
+      "tp": 230,
+      "fp": 140,
+      "tn": 895,
+      "fn": 144
+    },
+    {
+      "threshold": 0.7,
+      "precision": 0.6545,
+      "recall": 0.5267,
+      "f1": 0.5837,
+      "fpr": 0.1005,
+      "fnr": 0.4733,
+      "tp": 197,
+      "fp": 104,
+      "tn": 931,
+      "fn": 177
+    }
+  ],
+  "operational_thresholds": {
+    "high_risk": {
+      "threshold": 0.65,
+      "recall": 0.615,
+      "precision": 0.6216,
+      "business_rationale": "High-intervention cost playbook (concierge account manager outreach, major price incentives). Prioritizes high precision (69.2%) to minimize wasted incentive spend on false alarms."
+    },
+    "moderate_risk": {
+      "threshold": 0.35,
+      "recall": 0.8877,
+      "precision": 0.4403,
+      "business_rationale": "Low-cost intervention playbook (automated re-engagement emails, self-serve feature education). Prioritizes high recall (79.4%) to catch nearly 80% of churn candidates cheaply."
+    }
+  }
+}

@@ -13,7 +13,9 @@ import {
 } from 'lucide-react';
 import { MOCK_CUSTOMERS } from '../../data/mockCustomers';
 import { useAppContext } from '../../hooks/useAppContext';
+import { getCustomers } from '../../services/customerService';
 import type { DateRangeOption } from '../../types/analytics';
+import type { Customer } from '../../types/customer';
 import { NAV_ITEMS } from './Sidebar';
 
 interface NavbarProps {
@@ -58,7 +60,35 @@ export function Navbar({ onOpenMobileMenu }: NavbarProps) {
 
   const unreadCount = notifications.filter((n) => !n.read).length;
 
+  const [liveMatches, setLiveMatches] = useState<Customer[]>([]);
+
+  useEffect(() => {
+    const q = searchQuery.trim();
+    if (!q) {
+      setLiveMatches([]);
+      return;
+    }
+    let isCancelled = false;
+    const timer = setTimeout(() => {
+      getCustomers({ filters: { search: q }, pageSize: 6 })
+        .then((res) => {
+          if (!isCancelled && res.items) {
+            setLiveMatches(res.items);
+          }
+        })
+        .catch(() => {
+          if (!isCancelled) setLiveMatches([]);
+        });
+    }, 200);
+
+    return () => {
+      isCancelled = true;
+      clearTimeout(timer);
+    };
+  }, [searchQuery]);
+
   const searchMatches = useMemo(() => {
+    if (liveMatches.length > 0) return liveMatches;
     const q = searchQuery.trim().toLowerCase();
     if (!q) return [];
     return MOCK_CUSTOMERS.filter(
@@ -67,7 +97,7 @@ export function Navbar({ onOpenMobileMenu }: NavbarProps) {
         c.name.toLowerCase().includes(q) ||
         c.segment.toLowerCase().includes(q)
     ).slice(0, 6);
-  }, [searchQuery]);
+  }, [searchQuery, liveMatches]);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {

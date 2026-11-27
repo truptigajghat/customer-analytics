@@ -26,18 +26,20 @@ export function PredictionResultCard({ result }: PredictionResultCardProps) {
 
   return (
     <div className="space-y-5">
-      <DemoNotice
-        title="Demo Data – Not a Live Model Prediction"
-        message={result.disclaimer}
-        endpointHint="POST /api/v1/predict"
-      />
+      {result.isDemoData && (
+        <DemoNotice
+          title="Demo Data – Not a Live Model Prediction"
+          message={result.disclaimer}
+          endpointHint="POST /api/v1/predict"
+        />
+      )}
 
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
         {/* Probability & Risk Indicator */}
         <div className="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-5">
           <div className="flex items-center justify-between gap-2">
             <h3 className="text-sm font-semibold text-[var(--text-primary)]">
-              Sample Churn Probability
+              Churn Probability
             </h3>
             <StatusBadge
               label={`${result.riskCategory} Risk`}
@@ -50,7 +52,7 @@ export function PredictionResultCard({ result }: PredictionResultCardProps) {
               {formatProbability(result.churnProbability)}
             </span>
             <span className="text-xs text-[var(--text-muted)]">
-              placeholder score
+              model confidence
             </span>
           </div>
 
@@ -70,9 +72,9 @@ export function PredictionResultCard({ result }: PredictionResultCardProps) {
 
           <div className="mt-5 space-y-1.5 border-t border-[var(--border-subtle)] pt-4 text-xs text-[var(--text-secondary)]">
             <div className="flex justify-between">
-              <span>Source</span>
-              <span className="font-medium text-[var(--text-primary)]">
-                Sample Preview Adapter
+              <span>Model Reference</span>
+              <span className="font-medium text-[var(--text-primary)] truncate max-w-[180px]" title={result.modelReference}>
+                {result.modelReference}
               </span>
             </div>
             <div className="flex justify-between">
@@ -89,10 +91,10 @@ export function PredictionResultCard({ result }: PredictionResultCardProps) {
           <div className="mb-4 flex items-center justify-between">
             <div>
               <h3 className="text-sm font-semibold text-[var(--text-primary)]">
-                Contributing Risk Factors (Illustrative)
+                Contributing Risk Factors
               </h3>
               <p className="text-xs text-[var(--text-secondary)]">
-                Key account attributes influencing retention posture in the sample profile
+                Key account attributes influencing retention risk and model prediction
               </p>
             </div>
           </div>

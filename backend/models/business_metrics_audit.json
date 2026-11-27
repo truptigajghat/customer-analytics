@@ -1,0 +1,55 @@
+{
+  "customer_population": {
+    "total_customers": 7043,
+    "active_customers": 5174,
+    "churned_customers": 1869,
+    "churn_rate_pct": 26.54
+  },
+  "revenue_metrics": {
+    "total_dataset_mrr": 456116.6,
+    "active_mrr": 316985.75,
+    "churned_mrr": 139130.85
+  },
+  "contracts": {
+    "Month-to-month": {
+      "total": 3875,
+      "active": 2220,
+      "churned": 1655,
+      "churn_rate_pct": 42.71,
+      "mrr": 257294.15,
+      "active_mrr": 136447.05
+    },
+    "One year": {
+      "total": 1473,
+      "active": 1307,
+      "churned": 166,
+      "churn_rate_pct": 11.27,
+      "mrr": 95816.6,
+      "active_mrr": 81698.15
+    },
+    "Two year": {
+      "total": 1695,
+      "active": 1647,
+      "churned": 48,
+      "churn_rate_pct": 2.83,
+      "mrr": 103005.85,
+      "active_mrr": 98840.55
+    }
+  },
+  "m2m_churn_concentration_pct": 88.55,
+  "risk_exposure": {
+    "high_risk_p65": {
+      "count": 612,
+      "mrr_at_risk": 46427.8
+    },
+    "moderate_risk_p35_p65": {
+      "count": 1396,
+      "mrr_at_risk": 101812.3
+    },
+    "low_risk_under_p35": {
+      "count": 3166,
+      "mrr_at_risk": 168745.65
+    },
+    "actuarial_expected_mrr_loss": 111954.69
+  }
+}

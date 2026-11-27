@@ -8,17 +8,19 @@ import { CustomerProfileCard } from '../components/customers/CustomerProfileCard
 import { PredictionResultCard } from '../components/predictions/PredictionResultCard';
 import { MOCK_CUSTOMERS } from '../data/mockCustomers';
 import { useAsyncData } from '../hooks/useAsyncData';
+import { getCustomers } from '../services/customerService';
 import { predictCustomerChurn } from '../services/predictionService';
+import { USE_DEMO_DATA } from '../services/api';
 
 const QUICK_SAMPLES = [
-  { id: 'CUST-7590', label: 'CUST-7590 · High Risk Sample' },
-  { id: 'CUST-7892', label: 'CUST-7892 · Medium Risk Sample' },
-  { id: 'CUST-5575', label: 'CUST-5575 · Low Risk Sample' },
+  { id: '7590-VHVEG', label: '7590-VHVEG · High Risk (Month-to-Month)' },
+  { id: '3668-QPYBK', label: '3668-QPYBK · Moderate Risk (Fiber Optic)' },
+  { id: '5575-GNVDE', label: '5575-GNVDE · Low Risk (Two-Year Contract)' },
 ];
 
 export default function ChurnPrediction() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const initialId = searchParams.get('customerId') || 'CUST-7590';
+  const initialId = searchParams.get('customerId') || '7590-VHVEG';
 
   const [activeCustomerId, setActiveCustomerId] = useState<string>(initialId);
   const [idInput, setIdInput] = useState<string>(initialId);
@@ -37,15 +39,12 @@ export default function ChurnPrediction() {
     [activeCustomerId]
   );
 
-  const filteredDirectory = useMemo(() => {
-    const q = directoryFilter.trim().toLowerCase();
-    if (!q) return MOCK_CUSTOMERS.slice(0, 12);
-    return MOCK_CUSTOMERS.filter(
-      (c) =>
-        c.customerID.toLowerCase().includes(q) ||
-        c.name.toLowerCase().includes(q)
-    ).slice(0, 12);
-  }, [directoryFilter]);
+  const directoryState = useAsyncData(
+    () => getCustomers({ filters: { search: directoryFilter }, pageSize: 12 }),
+    [directoryFilter]
+  );
+
+  const filteredDirectory = directoryState.data?.items || (USE_DEMO_DATA ? MOCK_CUSTOMERS.slice(0, 12) : []);
 
   const handleSelectCustomer = (customerID: string) => {
     const trimmed = customerID.trim();
@@ -62,11 +61,13 @@ export default function ChurnPrediction() {
 
   return (
     <div className="space-y-6">
-      <DemoNotice
-        title="Demo Data – Not a Live Model Prediction"
-        message="This interface previews the churn prediction workflow with illustrative sample records. Connect the Python FastAPI ML service to generate live inference scores."
-        endpointHint="VITE_API_BASE_URL/api/v1/predict"
-      />
+      {data?.isDemoData && (
+        <DemoNotice
+          title="Demo Data – Not a Live Model Prediction"
+          message="This interface previews the churn prediction workflow with illustrative sample records. Connect the Python FastAPI ML service to generate live inference scores."
+          endpointHint="VITE_API_BASE_URL/api/v1/predict"
+        />
+      )}
 
       {/* Customer Lookup & Search Panel */}
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">

@@ -79,6 +79,13 @@ export async function getCustomers(
     if (params.pageSize) query.set('page_size', String(params.pageSize));
     if (params.sortBy) query.set('sort_by', params.sortBy);
     if (params.sortDir) query.set('sort_dir', params.sortDir);
+    if (params.filters?.search) query.set('search', params.filters.search);
+    if (params.filters?.gender && params.filters.gender !== 'All') query.set('gender', params.filters.gender);
+    if (params.filters?.contract && params.filters.contract !== 'All') query.set('contract', params.filters.contract);
+    if (params.filters?.paymentMethod && params.filters.paymentMethod !== 'All') query.set('payment_method', params.filters.paymentMethod);
+    if (params.filters?.internetService && params.filters.internetService !== 'All') query.set('internet_service', params.filters.internetService);
+    if (params.filters?.status && params.filters.status !== 'All') query.set('status', params.filters.status);
+    if (params.filters?.tenureRange && params.filters.tenureRange !== 'All') query.set('tenure_range', params.filters.tenureRange);
     return apiRequest<PaginatedCustomersResponse>(`/api/v1/customers?${query.toString()}`);
   }
 

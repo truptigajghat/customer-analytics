@@ -32,7 +32,7 @@ const INITIAL_MESSAGES: InsightChatMessage[] = [
     id: 'msg-welcome',
     role: 'assistant',
     content:
-      'Welcome to the ChurnIQ Business Insights Assistant preview. Select a suggested question below or enter a retention question to inspect sample analytical summaries. (Frontend UI only — live LLM / FastAPI connection is not active yet.)',
+      'Welcome to the ChurnIQ Retention Insights Advisor. Select a suggested question below or enter a customer retention inquiry to inspect portfolio churn drivers and tactical playbooks.',
     timestamp: 'Ready',
     isDemoResponse: true,
   },

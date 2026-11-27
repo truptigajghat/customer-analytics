@@ -22,6 +22,8 @@ import { StatusBadge } from '../components/common/StatusBadge';
 import { MOCK_CUSTOMERS } from '../data/mockCustomers';
 import { useAsyncData } from '../hooks/useAsyncData';
 import { getCustomerSegments } from '../services/analyticsService';
+import { getCustomers } from '../services/customerService';
+import { USE_DEMO_DATA } from '../services/api';
 import type { SegmentMetric } from '../types/analytics';
 import { formatCurrency, formatNumber } from '../utils/formatters';
 
@@ -47,10 +49,20 @@ export default function Segmentation() {
     [data, selectedSegmentName]
   );
 
-  const sampleMembers = useMemo(
-    () => MOCK_CUSTOMERS.filter((c) => c.segment === selectedSegmentName),
+  const membersState = useAsyncData(
+    () => getCustomers({ filters: { search: selectedSegmentName }, pageSize: 6 }),
     [selectedSegmentName]
   );
+
+  const sampleMembers = useMemo(() => {
+    if (membersState.data?.items && membersState.data.items.length > 0) {
+      return membersState.data.items;
+    }
+    if (USE_DEMO_DATA) {
+      return MOCK_CUSTOMERS.filter((c) => c.segment === selectedSegmentName);
+    }
+    return [];
+  }, [membersState.data, selectedSegmentName]);
 
   if (loading) return <LoadingState variant="page" />;
   if (error || !data) {

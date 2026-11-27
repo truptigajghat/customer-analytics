@@ -29,7 +29,9 @@ import { CustomerDetailModal } from '../components/customers/CustomerDetailModal
 import { MOCK_CUSTOMERS } from '../data/mockCustomers';
 import { useAppContext } from '../hooks/useAppContext';
 import { useAsyncData } from '../hooks/useAsyncData';
+import { USE_DEMO_DATA } from '../services/api';
 import { getDashboardOverview } from '../services/analyticsService';
+import { getCustomerById, getCustomers } from '../services/customerService';
 import type { CustomerActivityItem } from '../types/analytics';
 import type { Customer } from '../types/customer';
 import { formatCurrency } from '../utils/formatters';
@@ -44,13 +46,28 @@ export default function Overview() {
     [dateRange]
   );
 
-  const highRiskCustomers = useMemo(
+  const highRiskState = useAsyncData(
     () =>
-      MOCK_CUSTOMERS.filter(
-        (c) => c.Churn === 'No' && c.riskTier === 'High'
-      ).slice(0, 5),
+      getCustomers({
+        filters: { status: 'No' },
+        sortBy: 'riskTier',
+        sortDir: 'desc',
+        pageSize: 5,
+      }),
     []
   );
+
+  const highRiskCustomers = useMemo(() => {
+    if (highRiskState.data?.items && highRiskState.data.items.length > 0) {
+      return highRiskState.data.items;
+    }
+    if (USE_DEMO_DATA) {
+      return MOCK_CUSTOMERS.filter(
+        (c) => c.Churn === 'No' && c.riskTier === 'High'
+      ).slice(0, 5);
+    }
+    return [];
+  }, [highRiskState.data]);
 
   const activityColumns: DataTableColumn<CustomerActivityItem>[] = [
     {
@@ -109,9 +126,16 @@ export default function Overview() {
     },
   ];
 
-  const openCustomerById = (customerID: string) => {
-    const found = MOCK_CUSTOMERS.find((c) => c.customerID === customerID);
-    if (found) setSelectedCustomer(found);
+  const openCustomerById = async (customerID: string) => {
+    try {
+      const found = await getCustomerById(customerID);
+      if (found) setSelectedCustomer(found);
+    } catch {
+      if (USE_DEMO_DATA) {
+        const fallback = MOCK_CUSTOMERS.find((c) => c.customerID === customerID);
+        if (fallback) setSelectedCustomer(fallback);
+      }
+    }
   };
 
   if (loading) return <LoadingState variant="page" />;

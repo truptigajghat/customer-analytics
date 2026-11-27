@@ -25,3 +25,15 @@ export function csvEscape(value: string | number): string {
   }
   return str;
 }
+
+export function formatDate(isoString: string): string {
+  try {
+    return new Date(isoString).toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+    });
+  } catch {
+    return isoString;
+  }
+}

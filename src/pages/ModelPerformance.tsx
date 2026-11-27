@@ -37,6 +37,9 @@ export default function ModelPerformance() {
     [data, selectedModelId]
   );
 
+  const toPct = (val: number) => (val <= 1.0 ? val * 100 : val);
+  const toRatio = (val: number) => (val <= 1.0 ? val : val / 100);
+
   const comparisonBarData = useMemo(() => {
     if (!data) return [];
     const metrics: { key: keyof ModelComparisonItem; label: string }[] = [
@@ -52,9 +55,9 @@ export default function ModelPerformance() {
       const dt = data.models.find((x) => x.id === 'decision_tree')!;
       return {
         metric: m.label,
-        randomForest: Number(((rf[m.key] as number) * 100).toFixed(1)),
-        logisticRegression: Number(((lr[m.key] as number) * 100).toFixed(1)),
-        decisionTree: Number(((dt[m.key] as number) * 100).toFixed(1)),
+        randomForest: Number(toPct(rf[m.key] as number).toFixed(1)),
+        logisticRegression: Number(toPct(lr[m.key] as number).toFixed(1)),
+        decisionTree: Number(toPct(dt[m.key] as number).toFixed(1)),
       };
     });
   }, [data]);
@@ -63,7 +66,7 @@ export default function ModelPerformance() {
   if (error || !data || !selectedModel) {
     return (
       <ErrorState
-        message={error || 'Unable to load model evaluation placeholders.'}
+        message={error || 'Unable to load model evaluation metrics.'}
         onRetry={refetch}
       />
     );
@@ -74,11 +77,13 @@ export default function ModelPerformance() {
 
   return (
     <div className="space-y-6">
-      <DemoNotice
-        title="Illustrative Demo Data – Not Live Trained Model Telemetry"
-        message={data.disclaimer}
-        endpointHint="GET /api/v1/models/performance"
-      />
+      {data.isDemoData && (
+        <DemoNotice
+          title="Illustrative Demo Data – Not Live Trained Model Telemetry"
+          message={data.disclaimer}
+          endpointHint="GET /api/v1/models/performance"
+        />
+      )}
 
       {/* Model Comparison Cards */}
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
@@ -117,7 +122,7 @@ export default function ModelPerformance() {
                     Acc.
                   </span>
                   <span className="font-mono-num font-semibold text-[var(--text-primary)]">
-                    {(model.accuracy * 100).toFixed(1)}%
+                    {toPct(model.accuracy).toFixed(1)}%
                   </span>
                 </div>
                 <div>
@@ -125,7 +130,7 @@ export default function ModelPerformance() {
                     Prec.
                   </span>
                   <span className="font-mono-num font-semibold text-[var(--text-primary)]">
-                    {(model.precision * 100).toFixed(1)}%
+                    {toPct(model.precision).toFixed(1)}%
                   </span>
                 </div>
                 <div>
@@ -133,7 +138,7 @@ export default function ModelPerformance() {
                     Recall
                   </span>
                   <span className="font-mono-num font-semibold text-[var(--text-primary)]">
-                    {(model.recall * 100).toFixed(1)}%
+                    {toPct(model.recall).toFixed(1)}%
                   </span>
                 </div>
                 <div>
@@ -141,7 +146,7 @@ export default function ModelPerformance() {
                     F1
                   </span>
                   <span className="font-mono-num font-semibold text-[var(--text-primary)]">
-                    {(model.f1Score * 100).toFixed(1)}%
+                    {toPct(model.f1Score).toFixed(1)}%
                   </span>
                 </div>
                 <div>
@@ -149,7 +154,7 @@ export default function ModelPerformance() {
                     AUC
                   </span>
                   <span className="font-mono-num font-semibold text-[var(--accent-primary)]">
-                    {model.rocAuc.toFixed(3)}
+                    {toRatio(model.rocAuc).toFixed(3)}
                   </span>
                 </div>
               </div>
@@ -162,7 +167,11 @@ export default function ModelPerformance() {
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
         <ChartCard
           title={`Confusion Matrix · ${selectedModel.name}`}
-          subtitle={`Illustrative validation holdout matrix (${cmTotal.toLocaleString()} sample records)`}
+          subtitle={
+            data.isDemoData
+              ? `Illustrative validation holdout matrix (${cmTotal.toLocaleString()} sample records)`
+              : `Held-out test split evaluation matrix (${cmTotal.toLocaleString()} verified customers)`
+          }
         >
           <div className="space-y-4">
             <div className="grid grid-cols-[96px_1fr_1fr] gap-2.5 text-xs">

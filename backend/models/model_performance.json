@@ -1,0 +1,711 @@
+{
+  "models": [
+    {
+      "id": "logistic_regression",
+      "name": "Logistic Regression",
+      "shortName": "LogReg",
+      "accuracy": 0.7381,
+      "precision": 0.5043,
+      "recall": 0.7834,
+      "f1Score": 0.6136,
+      "rocAuc": 0.8417,
+      "trainingNote": "L2 regularization, balanced class weights, converged in <100 iterations.",
+      "confusionMatrix": {
+        "trueNegative": 747,
+        "falsePositive": 288,
+        "falseNegative": 81,
+        "truePositive": 293
+      }
+    },
+    {
+      "id": "decision_tree",
+      "name": "Decision Tree",
+      "shortName": "Decision Tree",
+      "accuracy": 0.7317,
+      "precision": 0.4967,
+      "recall": 0.8048,
+      "f1Score": 0.6143,
+      "rocAuc": 0.8299,
+      "trainingNote": "Pruned depth=5, min_samples_leaf=25 to prevent overfitting.",
+      "confusionMatrix": {
+        "trueNegative": 730,
+        "falsePositive": 305,
+        "falseNegative": 73,
+        "truePositive": 301
+      }
+    },
+    {
+      "id": "random_forest",
+      "name": "Random Forest",
+      "shortName": "Random Forest",
+      "accuracy": 0.753,
+      "precision": 0.5229,
+      "recall": 0.7941,
+      "f1Score": 0.6306,
+      "rocAuc": 0.8441,
+      "trainingNote": "Ensemble of 150 trees, max_depth=9, tuned for high Recall and ROC-AUC.",
+      "confusionMatrix": {
+        "trueNegative": 764,
+        "falsePositive": 271,
+        "falseNegative": 77,
+        "truePositive": 297
+      }
+    }
+  ],
+  "rocCurve": [
+    {
+      "x": 0.0,
+      "logisticRegression": 0.016,
+      "decisionTree": 0.0,
+      "randomForest": 0.0241,
+      "baseline": 0.0
+    },
+    {
+      "x": 0.0204,
+      "logisticRegression": 0.1551,
+      "decisionTree": 0.1779,
+      "randomForest": 0.2219,
+      "baseline": 0.0204
+    },
+    {
+      "x": 0.0408,
+      "logisticRegression": 0.3369,
+      "decisionTree": 0.2622,
+      "randomForest": 0.3155,
+      "baseline": 0.0408
+    },
+    {
+      "x": 0.0612,
+      "logisticRegression": 0.4037,
+      "decisionTree": 0.3464,
+      "randomForest": 0.393,
+      "baseline": 0.0612
+    },
+    {
+      "x": 0.0816,
+      "logisticRegression": 0.4626,
+      "decisionTree": 0.4003,
+      "randomForest": 0.484,
+      "baseline": 0.0816
+    },
+    {
+      "x": 0.102,
+      "logisticRegression": 0.5642,
+      "decisionTree": 0.4517,
+      "randomForest": 0.5374,
+      "baseline": 0.102
+    },
+    {
+      "x": 0.1224,
+      "logisticRegression": 0.5882,
+      "decisionTree": 0.503,
+      "randomForest": 0.5909,
+      "baseline": 0.1224
+    },
+    {
+      "x": 0.1429,
+      "logisticRegression": 0.6016,
+      "decisionTree": 0.5769,
+      "randomForest": 0.623,
+      "baseline": 0.1429
+    },
+    {
+      "x": 0.1633,
+      "logisticRegression": 0.623,
+      "decisionTree": 0.6566,
+      "randomForest": 0.6551,
+      "baseline": 0.1633
+    },
+    {
+      "x": 0.1837,
+      "logisticRegression": 0.6684,
+      "decisionTree": 0.6841,
+      "randomForest": 0.6898,
+      "baseline": 0.1837
+    },
+    {
+      "x": 0.2041,
+      "logisticRegression": 0.6952,
+      "decisionTree": 0.7091,
+      "randomForest": 0.7193,
+      "baseline": 0.2041
+    },
+    {
+      "x": 0.2245,
+      "logisticRegression": 0.7326,
+      "decisionTree": 0.734,
+      "randomForest": 0.7433,
+      "baseline": 0.2245
+    },
+    {
+      "x": 0.2449,
+      "logisticRegression": 0.7487,
+      "decisionTree": 0.7636,
+      "randomForest": 0.7674,
+      "baseline": 0.2449
+    },
+    {
+      "x": 0.2653,
+      "logisticRegression": 0.7781,
+      "decisionTree": 0.7906,
+      "randomForest": 0.7995,
+      "baseline": 0.2653
+    },
+    {
+      "x": 0.2857,
+      "logisticRegression": 0.7941,
+      "decisionTree": 0.8048,
+      "randomForest": 0.8289,
+      "baseline": 0.2857
+    },
+    {
+      "x": 0.3061,
+      "logisticRegression": 0.8182,
+      "decisionTree": 0.8178,
+      "randomForest": 0.8449,
+      "baseline": 0.3061
+    },
+    {
+      "x": 0.3265,
+      "logisticRegression": 0.8422,
+      "decisionTree": 0.841,
+      "randomForest": 0.8503,
+      "baseline": 0.3265
+    },
+    {
+      "x": 0.3469,
+      "logisticRegression": 0.8476,
+      "decisionTree": 0.8547,
+      "randomForest": 0.8529,
+      "baseline": 0.3469
+    },
+    {
+      "x": 0.3673,
+      "logisticRegression": 0.8797,
+      "decisionTree": 0.8639,
+      "randomForest": 0.869,
+      "baseline": 0.3673
+    },
+    {
+      "x": 0.3878,
+      "logisticRegression": 0.893,
+      "decisionTree": 0.8732,
+      "randomForest": 0.8797,
+      "baseline": 0.3878
+    },
+    {
+      "x": 0.4082,
+      "logisticRegression": 0.9037,
+      "decisionTree": 0.89,
+      "randomForest": 0.8877,
+      "baseline": 0.4082
+    },
+    {
+      "x": 0.4286,
+      "logisticRegression": 0.9198,
+      "decisionTree": 0.8991,
+      "randomForest": 0.9037,
+      "baseline": 0.4286
+    },
+    {
+      "x": 0.449,
+      "logisticRegression": 0.9278,
+      "decisionTree": 0.9082,
+      "randomForest": 0.9091,
+      "baseline": 0.449
+    },
+    {
+      "x": 0.4694,
+      "logisticRegression": 0.9332,
+      "decisionTree": 0.9172,
+      "randomForest": 0.9198,
+      "baseline": 0.4694
+    },
+    {
+      "x": 0.4898,
+      "logisticRegression": 0.9385,
+      "decisionTree": 0.9263,
+      "randomForest": 0.9332,
+      "baseline": 0.4898
+    },
+    {
+      "x": 0.5102,
+      "logisticRegression": 0.9519,
+      "decisionTree": 0.9354,
+      "randomForest": 0.9412,
+      "baseline": 0.5102
+    },
+    {
+      "x": 0.5306,
+      "logisticRegression": 0.9626,
+      "decisionTree": 0.9445,
+      "randomForest": 0.9492,
+      "baseline": 0.5306
+    },
+    {
+      "x": 0.551,
+      "logisticRegression": 0.9626,
+      "decisionTree": 0.952,
+      "randomForest": 0.9545,
+      "baseline": 0.551
+    },
+    {
+      "x": 0.5714,
+      "logisticRegression": 0.9733,
+      "decisionTree": 0.961,
+      "randomForest": 0.9572,
+      "baseline": 0.5714
+    },
+    {
+      "x": 0.5918,
+      "logisticRegression": 0.9759,
+      "decisionTree": 0.9647,
+      "randomForest": 0.9652,
+      "baseline": 0.5918
+    },
+    {
+      "x": 0.6122,
+      "logisticRegression": 0.9759,
+      "decisionTree": 0.9685,
+      "randomForest": 0.9759,
+      "baseline": 0.6122
+    },
+    {
+      "x": 0.6327,
+      "logisticRegression": 0.984,
+      "decisionTree": 0.9726,
+      "randomForest": 0.9813,
+      "baseline": 0.6327
+    },
+    {
+      "x": 0.6531,
+      "logisticRegression": 0.9866,
+      "decisionTree": 0.9752,
+      "randomForest": 0.9866,
+      "baseline": 0.6531
+    },
+    {
+      "x": 0.6735,
+      "logisticRegression": 0.9893,
+      "decisionTree": 0.9774,
+      "randomForest": 0.9893,
+      "baseline": 0.6735
+    },
+    {
+      "x": 0.6939,
+      "logisticRegression": 0.9893,
+      "decisionTree": 0.9792,
+      "randomForest": 0.992,
+      "baseline": 0.6939
+    },
+    {
+      "x": 0.7143,
+      "logisticRegression": 0.9893,
+      "decisionTree": 0.9809,
+      "randomForest": 0.992,
+      "baseline": 0.7143
+    },
+    {
+      "x": 0.7347,
+      "logisticRegression": 0.992,
+      "decisionTree": 0.9827,
+      "randomForest": 0.992,
+      "baseline": 0.7347
+    },
+    {
+      "x": 0.7551,
+      "logisticRegression": 0.9947,
+      "decisionTree": 0.9841,
+      "randomForest": 0.992,
+      "baseline": 0.7551
+    },
+    {
+      "x": 0.7755,
+      "logisticRegression": 0.9947,
+      "decisionTree": 0.9846,
+      "randomForest": 0.9947,
+      "baseline": 0.7755
+    },
+    {
+      "x": 0.7959,
+      "logisticRegression": 0.9947,
+      "decisionTree": 0.9852,
+      "randomForest": 0.9947,
+      "baseline": 0.7959
+    },
+    {
+      "x": 0.8163,
+      "logisticRegression": 0.9947,
+      "decisionTree": 0.9857,
+      "randomForest": 0.9947,
+      "baseline": 0.8163
+    },
+    {
+      "x": 0.8367,
+      "logisticRegression": 0.9947,
+      "decisionTree": 0.9862,
+      "randomForest": 0.9947,
+      "baseline": 0.8367
+    },
+    {
+      "x": 0.8571,
+      "logisticRegression": 0.9947,
+      "decisionTree": 0.9871,
+      "randomForest": 0.9947,
+      "baseline": 0.8571
+    },
+    {
+      "x": 0.8776,
+      "logisticRegression": 0.9973,
+      "decisionTree": 0.9895,
+      "randomForest": 0.9947,
+      "baseline": 0.8776
+    },
+    {
+      "x": 0.898,
+      "logisticRegression": 0.9973,
+      "decisionTree": 0.9919,
+      "randomForest": 0.9973,
+      "baseline": 0.898
+    },
+    {
+      "x": 0.9184,
+      "logisticRegression": 0.9973,
+      "decisionTree": 0.9935,
+      "randomForest": 0.9973,
+      "baseline": 0.9184
+    },
+    {
+      "x": 0.9388,
+      "logisticRegression": 1.0,
+      "decisionTree": 0.9952,
+      "randomForest": 1.0,
+      "baseline": 0.9388
+    },
+    {
+      "x": 0.9592,
+      "logisticRegression": 1.0,
+      "decisionTree": 0.9968,
+      "randomForest": 1.0,
+      "baseline": 0.9592
+    },
+    {
+      "x": 0.9796,
+      "logisticRegression": 1.0,
+      "decisionTree": 0.9984,
+      "randomForest": 1.0,
+      "baseline": 0.9796
+    },
+    {
+      "x": 1.0,
+      "logisticRegression": 1.0,
+      "decisionTree": 1.0,
+      "randomForest": 1.0,
+      "baseline": 1.0
+    }
+  ],
+  "precisionRecallCurve": [
+    {
+      "x": 0.0,
+      "logisticRegression": 1.0,
+      "decisionTree": 1.0,
+      "randomForest": 1.0
+    },
+    {
+      "x": 0.0204,
+      "logisticRegression": 0.8838,
+      "decisionTree": 0.9835,
+      "randomForest": 1.0
+    },
+    {
+      "x": 0.0408,
+      "logisticRegression": 0.7532,
+      "decisionTree": 0.9669,
+      "randomForest": 0.9385
+    },
+    {
+      "x": 0.0612,
+      "logisticRegression": 0.7411,
+      "decisionTree": 0.9504,
+      "randomForest": 0.8513
+    },
+    {
+      "x": 0.0816,
+      "logisticRegression": 0.7532,
+      "decisionTree": 0.9338,
+      "randomForest": 0.7923
+    },
+    {
+      "x": 0.102,
+      "logisticRegression": 0.7316,
+      "decisionTree": 0.9173,
+      "randomForest": 0.8267
+    },
+    {
+      "x": 0.1224,
+      "logisticRegression": 0.7659,
+      "decisionTree": 0.8984,
+      "randomForest": 0.8208
+    },
+    {
+      "x": 0.1429,
+      "logisticRegression": 0.7377,
+      "decisionTree": 0.8782,
+      "randomForest": 0.8043
+    },
+    {
+      "x": 0.1633,
+      "logisticRegression": 0.7264,
+      "decisionTree": 0.858,
+      "randomForest": 0.8028
+    },
+    {
+      "x": 0.1837,
+      "logisticRegression": 0.7332,
+      "decisionTree": 0.8377,
+      "randomForest": 0.8111
+    },
+    {
+      "x": 0.2041,
+      "logisticRegression": 0.7316,
+      "decisionTree": 0.8175,
+      "randomForest": 0.8092
+    },
+    {
+      "x": 0.2245,
+      "logisticRegression": 0.7367,
+      "decisionTree": 0.7973,
+      "randomForest": 0.785
+    },
+    {
+      "x": 0.2449,
+      "logisticRegression": 0.7411,
+      "decisionTree": 0.7771,
+      "randomForest": 0.7789
+    },
+    {
+      "x": 0.2653,
+      "logisticRegression": 0.7561,
+      "decisionTree": 0.7569,
+      "randomForest": 0.7619
+    },
+    {
+      "x": 0.2857,
+      "logisticRegression": 0.7586,
+      "decisionTree": 0.7367,
+      "randomForest": 0.748
+    },
+    {
+      "x": 0.3061,
+      "logisticRegression": 0.7508,
+      "decisionTree": 0.7164,
+      "randomForest": 0.7316
+    },
+    {
+      "x": 0.3265,
+      "logisticRegression": 0.7487,
+      "decisionTree": 0.6962,
+      "randomForest": 0.7396
+    },
+    {
+      "x": 0.3469,
+      "logisticRegression": 0.7383,
+      "decisionTree": 0.676,
+      "randomForest": 0.7341
+    },
+    {
+      "x": 0.3673,
+      "logisticRegression": 0.7216,
+      "decisionTree": 0.6633,
+      "randomForest": 0.7068
+    },
+    {
+      "x": 0.3878,
+      "logisticRegression": 0.7108,
+      "decisionTree": 0.6536,
+      "randomForest": 0.7005
+    },
+    {
+      "x": 0.4082,
+      "logisticRegression": 0.6982,
+      "decisionTree": 0.644,
+      "randomForest": 0.7014
+    },
+    {
+      "x": 0.4286,
+      "logisticRegression": 0.69,
+      "decisionTree": 0.6344,
+      "randomForest": 0.6812
+    },
+    {
+      "x": 0.449,
+      "logisticRegression": 0.6913,
+      "decisionTree": 0.6248,
+      "randomForest": 0.6828
+    },
+    {
+      "x": 0.4694,
+      "logisticRegression": 0.6636,
+      "decisionTree": 0.6152,
+      "randomForest": 0.6764
+    },
+    {
+      "x": 0.4898,
+      "logisticRegression": 0.6585,
+      "decisionTree": 0.6055,
+      "randomForest": 0.6755
+    },
+    {
+      "x": 0.5102,
+      "logisticRegression": 0.6584,
+      "decisionTree": 0.5959,
+      "randomForest": 0.663
+    },
+    {
+      "x": 0.5306,
+      "logisticRegression": 0.6627,
+      "decisionTree": 0.5942,
+      "randomForest": 0.6561
+    },
+    {
+      "x": 0.551,
+      "logisticRegression": 0.6625,
+      "decisionTree": 0.5939,
+      "randomForest": 0.652
+    },
+    {
+      "x": 0.5714,
+      "logisticRegression": 0.6502,
+      "decisionTree": 0.5936,
+      "randomForest": 0.6482
+    },
+    {
+      "x": 0.5918,
+      "logisticRegression": 0.6264,
+      "decisionTree": 0.5933,
+      "randomForest": 0.6336
+    },
+    {
+      "x": 0.6122,
+      "logisticRegression": 0.5995,
+      "decisionTree": 0.593,
+      "randomForest": 0.6257
+    },
+    {
+      "x": 0.6327,
+      "logisticRegression": 0.5776,
+      "decisionTree": 0.5927,
+      "randomForest": 0.5981
+    },
+    {
+      "x": 0.6531,
+      "logisticRegression": 0.5677,
+      "decisionTree": 0.5924,
+      "randomForest": 0.5925
+    },
+    {
+      "x": 0.6735,
+      "logisticRegression": 0.5649,
+      "decisionTree": 0.5835,
+      "randomForest": 0.5832
+    },
+    {
+      "x": 0.6939,
+      "logisticRegression": 0.5527,
+      "decisionTree": 0.5696,
+      "randomForest": 0.5748
+    },
+    {
+      "x": 0.7143,
+      "logisticRegression": 0.5406,
+      "decisionTree": 0.5558,
+      "randomForest": 0.5599
+    },
+    {
+      "x": 0.7347,
+      "logisticRegression": 0.5411,
+      "decisionTree": 0.5419,
+      "randomForest": 0.5498
+    },
+    {
+      "x": 0.7551,
+      "logisticRegression": 0.5255,
+      "decisionTree": 0.5328,
+      "randomForest": 0.5385
+    },
+    {
+      "x": 0.7755,
+      "logisticRegression": 0.517,
+      "decisionTree": 0.5251,
+      "randomForest": 0.5273
+    },
+    {
+      "x": 0.7959,
+      "logisticRegression": 0.4989,
+      "decisionTree": 0.5165,
+      "randomForest": 0.5235
+    },
+    {
+      "x": 0.8163,
+      "logisticRegression": 0.4914,
+      "decisionTree": 0.4921,
+      "randomForest": 0.5163
+    },
+    {
+      "x": 0.8367,
+      "logisticRegression": 0.4837,
+      "decisionTree": 0.4839,
+      "randomForest": 0.5097
+    },
+    {
+      "x": 0.8571,
+      "logisticRegression": 0.4697,
+      "decisionTree": 0.4684,
+      "randomForest": 0.4676
+    },
+    {
+      "x": 0.8776,
+      "logisticRegression": 0.4634,
+      "decisionTree": 0.4465,
+      "randomForest": 0.4526
+    },
+    {
+      "x": 0.898,
+      "logisticRegression": 0.4533,
+      "decisionTree": 0.4339,
+      "randomForest": 0.434
+    },
+    {
+      "x": 0.9184,
+      "logisticRegression": 0.439,
+      "decisionTree": 0.4154,
+      "randomForest": 0.4166
+    },
+    {
+      "x": 0.9388,
+      "logisticRegression": 0.404,
+      "decisionTree": 0.3969,
+      "randomForest": 0.3998
+    },
+    {
+      "x": 0.9592,
+      "logisticRegression": 0.3978,
+      "decisionTree": 0.3798,
+      "randomForest": 0.3769
+    },
+    {
+      "x": 0.9796,
+      "logisticRegression": 0.3651,
+      "decisionTree": 0.3369,
+      "randomForest": 0.364
+    },
+    {
+      "x": 1.0,
+      "logisticRegression": 0.2654,
+      "decisionTree": 0.2654,
+      "randomForest": 0.2654
+    }
+  ],
+  "isDemoData": false,
+  "disclaimer": "Live Model Performance computed on held-out test split (1,409 customers) using Scikit-Learn."
+}
